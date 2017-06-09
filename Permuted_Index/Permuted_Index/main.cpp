@@ -2,16 +2,34 @@
 #include <fstream>
 using namespace std;
 
-int main() {
+int main(int argc, char* argv[]) {
+	string file;
+	if (argc != 1)
+		file = argv[1];
+	else {
+		cout << "Enter file name: ";
+		cin >> file;
+	}
+
+	bool showOnConsole = true;
+	string ans;
+	cout << "Do you want to see result on console? (yes, no)";
+	cin >> ans;
+	if (ans == "no")
+		showOnConsole = false;
 	cout.sync_with_stdio(false);
 	Permuted_Index peridx;
-	ifstream fileIn("input.txt");
+	ifstream fileIn(file.c_str());
 	peridx.input(fileIn);
 	peridx.split();
 	peridx.rotate();
 	peridx.sort();
 	peridx.unrotate();
-	peridx.display();
+	ofstream os("result.txt");
+	if (showOnConsole)
+		peridx.display();
+	else
+		peridx.display(os);
 
 	return 0;
 }

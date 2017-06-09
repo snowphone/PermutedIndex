@@ -33,12 +33,12 @@ ostream& operator<< (ostream& os, const Rotation& rot) {
 	for (size_t i = 0; i < words.size(); ++i) {
 		if (i == rot.second) {
 			len = maxLen - (len-1);
-			ret = string(len, ' ') + ret + string(8, ' ');
+			ret = string(len, ' ') + ret + string(4, ' ');
 		}
 		len += words[i].size() + 1;
 		ret += words[i] + " ";
 	}
-	cout << ret;
+	os << ret;
 	return os;
 }
 
