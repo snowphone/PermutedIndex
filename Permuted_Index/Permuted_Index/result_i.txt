@@ -1,0 +1,140 @@
+                          ---original---
+When he himself might his quietus make
+With a bare bodkin? who would fardels bear,
+To grunt and sweat under a weary life,
+But that the dread of something after death,
+The undiscover'd country from whose bourn
+No traveller returns, puzzles the will
+And makes us rather bear those ills we have
+Than fly to others that we know not of?
+Thus conscience does make cowards of us all;
+And thus the native hue of resolution
+Is sicklied o'er with the pale cast of thought,
+And enterprises of great pith and moment
+With this regard their currents turn awry,
+And lose the name of action. - Soft you now!
+The fair Ophelia! Nymph, in thy orisons
+Be all my sins remember'd.
+                    ---permuted index---
+                   And lose the name of action.  | - Soft you now!                                 line:   14 | word:    6
+                           And lose the name of  | action. - Soft you now!                         line:   14 | word:    5
+                                           With  | a bare bodkin? who would fardels bear,          line:    2 | word:    1
+                But that the dread of something  | after death,                                    line:    4 | word:    6
+                                             Be  | all my sins remember'd.                         line:   16 | word:    1
+        Thus conscience does make cowards of us  | all;                                            line:    9 | word:    7
+                                                 | And enterprises of great pith and moment        line:   12 | word:    0
+                                                 | And lose the name of action. - Soft you now!    line:   14 | word:    0
+                                                 | And makes us rather bear those ills we have     line:    7 | word:    0
+                  And enterprises of great pith  | and moment                                      line:   12 | word:    5
+                                       To grunt  | and sweat under a weary life,                   line:    3 | word:    2
+                                                 | And thus the native hue of resolution           line:   10 | word:    0
+                       To grunt and sweat under  | a weary life,                                   line:    3 | word:    5
+           With this regard their currents turn  | awry,                                           line:   13 | word:    6
+                                         With a  | bare bodkin? who would fardels bear,            line:    2 | word:    2
+                                                 | Be all my sins remember'd.                      line:   16 | word:    0
+                            And makes us rather  | bear those ills we have                         line:    7 | word:    4
+          With a bare bodkin? who would fardels  | bear,                                           line:    2 | word:    7
+                                    With a bare  | bodkin? who would fardels bear,                 line:    2 | word:    3
+            The undiscover'd country from whose  | bourn                                           line:    5 | word:    5
+                                                 | But that the dread of something after death,    line:    4 | word:    0
+                 Is sicklied o'er with the pale  | cast of thought,                                line:   11 | word:    6
+                                           Thus  | conscience does make cowards of us all;         line:    9 | word:    1
+                               The undiscover'd  | country from whose bourn                        line:    5 | word:    2
+                      Thus conscience does make  | cowards of us all;                              line:    9 | word:    4
+                         With this regard their  | currents turn awry,                             line:   13 | word:    4
+          But that the dread of something after  | death,                                          line:    4 | word:    7
+                                Thus conscience  | does make cowards of us all;                    line:    9 | word:    2
+                                   But that the  | dread of something after death,                 line:    4 | word:    3
+                                            And  | enterprises of great pith and moment            line:   12 | word:    1
+                                            The  | fair Ophelia! Nymph, in thy orisons             line:   15 | word:    1
+                  With a bare bodkin? who would  | fardels bear,                                   line:    2 | word:    6
+                                           Than  | fly to others that we know not of?              line:    8 | word:    1
+                       The undiscover'd country  | from whose bourn                                line:    5 | word:    3
+                             And enterprises of  | great pith and moment                           line:   12 | word:    3
+                                             To  | grunt and sweat under a weary life,             line:    3 | word:    1
+         And makes us rather bear those ills we  | have                                            line:    7 | word:    8
+                                           When  | he himself might his quietus make               line:    1 | word:    1
+                                        When he  | himself might his quietus make                  line:    1 | word:    2
+                          When he himself might  | his quietus make                                line:    1 | word:    4
+                            And thus the native  | hue of resolution                               line:   10 | word:    4
+                 And makes us rather bear those  | ills we have                                    line:    7 | word:    6
+                       The fair Ophelia! Nymph,  | in thy orisons                                  line:   15 | word:    4
+                                                 | Is sicklied o'er with the pale cast of thought, line:   11 | word:    0
+                     Than fly to others that we  | know not of?                                    line:    8 | word:    6
+               To grunt and sweat under a weary  | life,                                           line:    3 | word:    7
+                                            And  | lose the name of action. - Soft you now!        line:   14 | word:    1
+                           Thus conscience does  | make cowards of us all;                         line:    9 | word:    3
+                                            And  | makes us rather bear those ills we have         line:    7 | word:    1
+              When he himself might his quietus  | make                                            line:    1 | word:    6
+                                When he himself  | might his quietus make                          line:    1 | word:    3
+              And enterprises of great pith and  | moment                                          line:   12 | word:    6
+                                         Be all  | my sins remember'd.                             line:   16 | word:    2
+                                   And lose the  | name of action. - Soft you now!                 line:   14 | word:    3
+                                   And thus the  | native hue of resolution                        line:   10 | word:    3
+                Than fly to others that we know  | not of?                                         line:    8 | word:    7
+        And lose the name of action. - Soft you  | now!                                            line:   14 | word:    9
+                                                 | No traveller returns, puzzles the will          line:    6 | word:    0
+                              The fair Ophelia!  | Nymph, in thy orisons                           line:   15 | word:    3
+                                    Is sicklied  | o'er with the pale cast of thought,             line:   11 | word:    2
+                              And lose the name  | of action. - Soft you now!                      line:   14 | word:    4
+                                And enterprises  | of great pith and moment                        line:   12 | word:    2
+                        And thus the native hue  | of resolution                                   line:   10 | word:    5
+                             But that the dread  | of something after death,                       line:    4 | word:    4
+            Than fly to others that we know not  | of?                                             line:    8 | word:    8
+            Is sicklied o'er with the pale cast  | of thought,                                     line:   11 | word:    7
+              Thus conscience does make cowards  | of us all;                                      line:    9 | word:    5
+                                       The fair  | Ophelia! Nymph, in thy orisons                  line:   15 | word:    2
+                The fair Ophelia! Nymph, in thy  | orisons                                         line:   15 | word:    6
+                                    Than fly to  | others that we know not of?                     line:    8 | word:    3
+                      Is sicklied o'er with the  | pale cast of thought,                           line:   11 | word:    5
+                       And enterprises of great  | pith and moment                                 line:   12 | word:    4
+                          No traveller returns,  | puzzles the will                                line:    6 | word:    3
+                      When he himself might his  | quietus make                                    line:    1 | word:    5
+                                   And makes us  | rather bear those ills we have                  line:    7 | word:    3
+                                      With this  | regard their currents turn awry,                line:   13 | word:    2
+                                 Be all my sins  | remember'd.                                     line:   16 | word:    4
+                     And thus the native hue of  | resolution                                      line:   10 | word:    6
+                                   No traveller  | returns, puzzles the will                       line:    6 | word:    2
+                                             Is  | sicklied o'er with the pale cast of thought,    line:   11 | word:    1
+                                      Be all my  | sins remember'd.                                line:   16 | word:    3
+                 And lose the name of action. -  | Soft you now!                                   line:   14 | word:    7
+                          But that the dread of  | something after death,                          line:    4 | word:    5
+                                   To grunt and  | sweat under a weary life,                       line:    3 | word:    3
+                                                 | Than fly to others that we know not of?         line:    8 | word:    0
+                                            But  | that the dread of something after death,        line:    4 | word:    1
+                             Than fly to others  | that we know not of?                            line:    8 | word:    4
+                               With this regard  | their currents turn awry,                       line:   13 | word:    3
+                                       But that  | the dread of something after death,             line:    4 | word:    2
+                                                 | The fair Ophelia! Nymph, in thy orisons         line:   15 | word:    0
+                                       And lose  | the name of action. - Soft you now!             line:   14 | word:    2
+                                       And thus  | the native hue of resolution                    line:   10 | word:    2
+                          Is sicklied o'er with  | the pale cast of thought,                       line:   11 | word:    4
+                                                 | The undiscover'd country from whose bourn       line:    5 | word:    0
+                  No traveller returns, puzzles  | the will                                        line:    6 | word:    4
+                                           With  | this regard their currents turn awry,           line:   13 | word:    1
+                       And makes us rather bear  | those ills we have                              line:    7 | word:    5
+         Is sicklied o'er with the pale cast of  | thought,                                        line:   11 | word:    8
+                                                 | Thus conscience does make cowards of us all;    line:    9 | word:    0
+                                            And  | thus the native hue of resolution               line:   10 | word:    1
+                    The fair Ophelia! Nymph, in  | thy orisons                                     line:   15 | word:    5
+                                                 | To grunt and sweat under a weary life,          line:    3 | word:    0
+                                       Than fly  | to others that we know not of?                  line:    8 | word:    2
+                                             No  | traveller returns, puzzles the will             line:    6 | word:    1
+                With this regard their currents  | turn awry,                                      line:   13 | word:    5
+                             To grunt and sweat  | under a weary life,                             line:    3 | word:    4
+                                            The  | undiscover'd country from whose bourn           line:    5 | word:    1
+           Thus conscience does make cowards of  | us all;                                         line:    9 | word:    6
+                                      And makes  | us rather bear those ills we have               line:    7 | word:    2
+            And makes us rather bear those ills  | we have                                         line:    7 | word:    7
+                        Than fly to others that  | we know not of?                                 line:    8 | word:    5
+                     To grunt and sweat under a  | weary life,                                     line:    3 | word:    6
+                                                 | When he himself might his quietus make          line:    1 | word:    0
+                  The undiscover'd country from  | whose bourn                                     line:    5 | word:    4
+                            With a bare bodkin?  | who would fardels bear,                         line:    2 | word:    4
+              No traveller returns, puzzles the  | will                                            line:    6 | word:    5
+                                                 | With a bare bodkin? who would fardels bear,     line:    2 | word:    0
+                               Is sicklied o'er  | with the pale cast of thought,                  line:   11 | word:    3
+                                                 | With this regard their currents turn awry,      line:   13 | word:    0
+                        With a bare bodkin? who  | would fardels bear,                             line:    2 | word:    5
+            And lose the name of action. - Soft  | you now!                                        line:   14 | word:    8
+

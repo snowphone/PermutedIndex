@@ -4,34 +4,45 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 	cout.sync_with_stdio(false);
+	try {
+		if (argc == 1)
+			throw "no input";
+	}
+	catch (const char* c) { cout << c; while (true); }
+#if 0
+	bool showOnConsole;
 	string file;
-	if (argc != 1)
+	if (argc != 1) {
+		showOnConsole = false;
 		file = argv[1];
+		cout << argv[1] << endl;
+	}
 	else {
+		showOnConsole = true;
 		cout << "Enter file name: ";
 		cin >> file;
 	}
-
-	bool showOnConsole = true;
-	string ans;
-	cout << "Do you want to see result on console? (yes, no)";
-	cin >> ans;
-	if (ans == "no")
-		showOnConsole = false;
+#endif
+	ifstream fileIn(argv[1]);
 	Permuted_Index peridx;
-	ifstream fileIn(file.c_str());
 	peridx.input(fileIn);
 	peridx.compute();
 
-	string fileOut = "result_" + file;
-	if (string(fileOut.end() - 5, fileOut.end()) != ".txt")
+	string fileOut = argv[1];
+	if(fileOut.find(".txt") == string::npos)
 		fileOut += ".txt";
-	ofstream os(fileOut.c_str());
+	string ele = ("\\");
+	auto it = find_end(fileOut.begin(), fileOut.end(), ele.begin(), ele.end());
+	if (it != fileOut.end())
+		fileOut = string(it + 1, fileOut.end());
+	fileOut = "result_" + fileOut;
 
-	if (showOnConsole)
-		peridx.display();
-	else
-		peridx.display(os);
+	ofstream os(fileOut.c_str());
+	cout << fileOut << endl;
+	os<< setw(40) << "---original---" << endl;
+	peridx.showOriginal(os);
+	os<< setw(40) << "---permuted index---" << endl
+		<< peridx << endl;
 
 	return 0;
 }
