@@ -20,11 +20,7 @@ typedef vector<Word> Words;
 typedef pair<Words, int> Rotation;
 typedef vector<Rotation> Rotations;
 class Permuted_Index;
-ostream& operator<< (ostream& os, const Words& rhs) {
-	for (auto i : rhs) 
-		os << i << ' ';
-	return os;
-}
+
 size_t maxLen;
 ostream& operator<< (ostream& os, const Rotation& rot) {
 	auto& words = rot.first;
@@ -52,6 +48,9 @@ private:
 	void rotate(const Words& words);
 public:
 	Permuted_Index() {}
+	void doit() {
+		input(); split(); rotate(); sort(); unrotate(); display();
+	}
 	void input(std::istream& is = std::cin);
 	void split();
 	void rotate();

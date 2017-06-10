@@ -3,6 +3,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
+	cout.sync_with_stdio(false);
 	string file;
 	if (argc != 1)
 		file = argv[1];
@@ -17,7 +18,6 @@ int main(int argc, char* argv[]) {
 	cin >> ans;
 	if (ans == "no")
 		showOnConsole = false;
-	cout.sync_with_stdio(false);
 	Permuted_Index peridx;
 	ifstream fileIn(file.c_str());
 	peridx.input(fileIn);
