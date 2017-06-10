@@ -21,11 +21,13 @@ int main(int argc, char* argv[]) {
 	Permuted_Index peridx;
 	ifstream fileIn(file.c_str());
 	peridx.input(fileIn);
-	peridx.split();
-	peridx.rotate();
-	peridx.sort();
-	peridx.unrotate();
-	ofstream os("result.txt");
+	peridx.compute();
+
+	string fileOut = "result_" + file;
+	if (string(fileOut.end() - 5, fileOut.end()) != ".txt")
+		fileOut += ".txt";
+	ofstream os(fileOut.c_str());
+
 	if (showOnConsole)
 		peridx.display();
 	else
