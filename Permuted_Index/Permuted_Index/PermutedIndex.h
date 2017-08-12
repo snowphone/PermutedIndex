@@ -55,7 +55,7 @@ public:
 	void compute() { if (!done) { split(); rotate(); sort(); unrotate(), trimForOutput(); done = true; } }
 	void input(std::istream& is = std::cin);
 
-	void display(ostream& os = std::cout) { os << *this; }
+	void result(ostream& os = std::cout) { os << *this; }
 };
 
 
@@ -183,6 +183,7 @@ void Permuted_Index::split() {
 }
 
 void Permuted_Index::input(std::istream& is) {
+	done = false;
 	Sentence s;
 	while (std::getline(is, s.first)) {
 		maxLen = std::max(s.first.size(), maxLen);
