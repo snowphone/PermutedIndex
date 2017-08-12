@@ -2,7 +2,9 @@
 Example
 
 The quick brown fox
+
 jumped over the fence
+
                     ---permuted index---
             The quick  | brown fox             line:    1 | word:    3
       jumped over the  | fence                 line:    2 | word:    4
