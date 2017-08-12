@@ -1,3 +1,6 @@
+import sys
+
+
 def rotate(list, idx):
     ''' shift elements
         idxTH element become the first element
@@ -5,9 +8,10 @@ def rotate(list, idx):
         '''
     return list[idx:] + list[:idx]
 
+
 class PermutedIndex:
 
-    def __init__(self)
+    def __init__(self):
         self.maxLen = 0
         self.original = []  # (line, line_num)
         self.__splitted = []  # (words(more than one), lineNum)
@@ -16,32 +20,37 @@ class PermutedIndex:
         self.result = []
         return
 
-    def getFromConsole(self):
+    def fileIn(self):
         ''' press one more enter to exit getting inputs '''
-        while True:
-            s = input()
-            if s == "":
-               return
-            else:
-                self.maxLen = max(self.maxLen, len(s))
-                self.original.append(s)
+        if(len(sys.argv) == 1):
+            return
+        with open(sys.argv[1], 'r', encoding="utf-8") as f:
+            s = f.readline()
+            self.maxLen = max(self.maxLen, len(s))
+            self.original.append(s)
         return
 
     def __split(self):
-        self.__splitted = [(line.split(), lineNum) for lineNum,line in enumerate(self.original)]
+        self.__splitted = [(line.split(), lineNum)
+                           for lineNum, line in enumerate(self.original)]
         return
+
     def __rotate(self):
-        self.__rotated = [(rotate(words,idx) , idx,lineNum) for words, lineNum in self.__splitted
-                    for idx in range(len(words))]
+        self.__rotated = [(rotate(words, idx), idx, lineNum) for words, lineNum in self.__splitted
+                          for idx in range(len(words))]
         self.__splitted.clear()
         return
+
     def __sort(self):
         self.__rotated.sort()
         return
+
     def __unrotate(self):
-        self.__notFormatted = [(rotate(words,-wordNum), wordNum, lineNum) for words,wordNum, lineNum in self.__rotated]
+        self.__notFormatted = [(rotate(words, -wordNum), wordNum, lineNum)
+                               for words, wordNum, lineNum in self.__rotated]
         self.__rotated.clear()
         return
+
     def __trim(self):
         separator = ' ' * 4
         self.maxLen += 4
@@ -60,16 +69,21 @@ class PermutedIndex:
 
         self.__notFormatted.clear()
         return
-    def compute(self):
+
+    def __compute(self):
         if self.result == []:
-            self.__split();   self.__rotate()
-            self.__sort();    self.__unrotate()
-            self.__trim();    
+            self.__split()
+            self.__rotate()
+            self.__sort()
+            self.__unrotate()
+            self.__trim()
+
     def display(self):
         '''print order: sentence, word index, line number
             monospace font essential'''
+        print("display order: sentence, word, line (0 index)")
         if self.result == []:
-            compute()
+            self.__compute()
         print(*self.result, sep='\n')
 
         return
@@ -82,12 +96,7 @@ class PermutedIndex:
 
 def main():
     p = PermutedIndex()
-    p.getFromConsole()
-    p.__split()
-    p.__rotate()
-    p.__sort()
-    p.__unrotate()
-    p.__trim()
+    p.fileIn()
     p.display()
     return
 
