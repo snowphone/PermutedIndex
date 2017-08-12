@@ -50,7 +50,7 @@ inline void IOfile::getData()
 	for (auto& fileName : fileNames) {
 		IN in(fileName);
 		OUT out(resultFileName(fileName));
-		perIdx.input(in);
+		perIdx.setData(in);
 		perIdx.result(out);
 	}
 }
@@ -60,7 +60,7 @@ inline void IOfile::getFormattedData()
 	for (auto& fileName : fileNames) {
 		IN in(fileName);
 		OUT out(resultFileName(fileName));
-		perIdx.input(in);
+		perIdx.setData(in);
 
 	out<< setw(40) << "---original---" << endl;
 	perIdx.showOriginal(out);

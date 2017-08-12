@@ -49,11 +49,11 @@ private:
 	void unrotate();
 	void trimForOutput();
 	bool done;
+	void compute() { if (!done) { split(); rotate(); sort(); unrotate(), trimForOutput(); done = true; } }
 public:
 	Permuted_Index() : done(false), maxLen(0) {}
 	void showOriginal(ostream& os = std::cout) { for (auto i : sentences) os << i.first << endl; }
-	void compute() { if (!done) { split(); rotate(); sort(); unrotate(), trimForOutput(); done = true; } }
-	void input(std::istream& is = std::cin);
+	void setData(std::istream& is = std::cin);
 
 	void result(ostream& os = std::cout) { os << *this; }
 };
@@ -98,7 +98,7 @@ inline void Permuted_Index::trimForOutput() {
 		}
 
 		retSentence += string(separator.size()+ (1 + maxLen) * 2 - retSentence.size(), ' ');
-		output.push_back(make_tuple(retSentence, rotation.first.second, rotation.second));
+		output.push_back(make_tuple(retSentence, rotation.first.second+1, rotation.second+1));
 	}
 	rotations.clear();
 }
@@ -182,12 +182,12 @@ void Permuted_Index::split() {
 	}
 }
 
-void Permuted_Index::input(std::istream& is) {
+void Permuted_Index::setData(std::istream& is) {
 	done = false;
 	Sentence s;
 	while (std::getline(is, s.first)) {
 		maxLen = std::max(s.first.size(), maxLen);
-		s.second = sentences.size() + 1;
+		s.second = sentences.size();
 		sentences.push_back(s);
 	}
 }
