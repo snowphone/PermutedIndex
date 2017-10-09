@@ -6,15 +6,15 @@
 #include <string>
 #include "PermutedIndex.h"
 typedef std::string str;
-#define IN std::ifstream
-#define OUT std::ofstream
+using is = std::ifstream;
+using os = std::ofstream;
 
 class IOfile
 {
 public:
 	IOfile(int argc, char* argv[]);
 	void getData();
-	void getFormattedData();
+	void display();
 	~IOfile();
 
 private:
@@ -30,7 +30,7 @@ inline IOfile::IOfile(int argc, char * argv[])
 	//파일 입력 안됨.
 	if (argc == 1) {
 		str fileName;
-		cout << "Enter file name" << std::endl;
+		cout << "Enter file name: ";
 		cin >> fileName;
 		fileNames.push_back(fileName);
 	}
@@ -44,22 +44,22 @@ inline IOfile::IOfile(int argc, char * argv[])
 IOfile::~IOfile()
 {
 }
-
+//display only results
 inline void IOfile::getData()
 {
 	for (auto& fileName : fileNames) {
-		IN in(fileName);
-		OUT out(resultFileName(fileName));
+		is in(fileName);
+		os out(resultFileName(fileName));
 		perIdx.setData(in);
 		perIdx.result(out);
 	}
 }
 
-inline void IOfile::getFormattedData()
+inline void IOfile::display()
 {
 	for (auto& fileName : fileNames) {
-		IN in(fileName);
-		OUT out(resultFileName(fileName));
+		is in(fileName);
+		os out(resultFileName(fileName));
 		perIdx.setData(in);
 
 	out<< setw(40) << "---original---" << endl;

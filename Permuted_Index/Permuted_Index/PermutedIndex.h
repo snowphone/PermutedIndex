@@ -1,15 +1,15 @@
-#pragma once
+﻿#pragma once
 #ifndef _PERMUTEDINDEX_H
 #define _PERMUTEDINDEX_H
-#include <iostream>
-#include <cctype>
-#include <iomanip>
-#include <vector>
-#include <map>
-#include <cassert>
-#include <string>
 #include <algorithm>
+#include <cassert>
+#include <iostream>
+#include <iomanip>
+#include <locale>
+#include <map>
+#include <string>
 #include <tuple>
+#include <vector>
 using std::vector;		using std::cin;
 using std::cout;		using std::string;
 using std::getline;		using std::istream;
@@ -17,17 +17,22 @@ using std::map;			using std::make_pair;
 using std::pair;		using std::ostream;
 using std::endl;		using std::setw;
 using std::tuple;		using std::make_tuple;
-using std::get;
-typedef pair<string, size_t> Sentence;
-typedef vector<Sentence> Sentences;
-typedef string Word;	
-// <words, line>
-typedef pair<vector<Word>, size_t> Words;	
-//<words, line, word_order>
-typedef pair<Words, int> Rotation;
-typedef vector<Rotation> Rotations;
-//				sentence, line, word_order
+using std::get;			using std::tie;
+using std::lexicographical_compare;
+
+
+
+using Word = string;
+using Words = vector<Word>;
+//					<words, line, word_order>
+using Data = tuple<Words, size_t, size_t>;
+using Sentence = pair<string, size_t>;
+using Sentences = vector<Sentence>;
+using Words = vector<Word>;
+typedef vector<Data> Rotations;
+//			sentence, line, word_order
 typedef tuple<string, size_t, size_t> outputForm;
+
 class Permuted_Index;
 
 
@@ -38,13 +43,13 @@ class Permuted_Index {
 private:
 	size_t maxLen;
 	Sentences sentences;		//original sentence
-	vector<Words> vec_Words;	//split to each word
+	vector<Data> dataVector;	//split to each word
 	Rotations rotations;		//rotated ver
 	vector<outputForm> output;	
 	void split();
 	void split(const Sentence& sentence);
 	void rotate();
-	void rotate(const Words& words);
+	void rotate(Data&);
 	void sort();
 	void unrotate();
 	void trimForOutput();
@@ -59,14 +64,14 @@ public:
 };
 
 
-
-
-
 ostream& operator<< (ostream& os, const outputForm& output) {
-	os << get<0>(output) << "line: " << setw(4) << get<1>(output)
-		<< " | word: " << setw(4) << get<2>(output);
+	const auto& [sentence, lineNO, wordOrder] = output;
+
+	os << sentence << "line: " << setw(4) << lineNO
+		<< " | word: " << setw(4) << wordOrder;
 	return os;
 }
+
 ostream& operator<< (ostream& os, Permuted_Index& object) {
 	//this condition guagentee to show output without exception.
 	if (!object.done)
@@ -80,16 +85,15 @@ ostream& operator<< (ostream& os, Permuted_Index& object) {
 inline void Permuted_Index::trimForOutput() {
 	static string separator(" | ");
 
-	for (Rotation rotation : rotations) {
+	for (Data& rotation : rotations) {
 
-		auto size = rotation.first.first.size();
-		auto idx = rotation.second;
-		auto& words = rotation.first.first;
+		auto& [words, lineNO, wordOrder] = rotation;
+		Word::size_type size = words.size();
 
 		string retSentence;
 		size_t len = 0;
 		for (size_t i = 0; i < size; ++i) {
-			if (i == idx) {
+			if (i == wordOrder) {
 				len = maxLen - (len - 1);
 				retSentence = string(len, ' ') + retSentence + separator;
 			}
@@ -98,82 +102,89 @@ inline void Permuted_Index::trimForOutput() {
 		}
 
 		retSentence += string(separator.size()+ (1 + maxLen) * 2 - retSentence.size(), ' ');
-		output.push_back(make_tuple(retSentence, rotation.first.second+1, rotation.second+1));
+
+		//lineNO와 wordOrder에 +1을 하는것은 시작점을 1로 하기 위함이다.
+		output.push_back({ retSentence, lineNO + 1, wordOrder + 1 });
 	}
 	rotations.clear();
 }
 
 void Permuted_Index::unrotate() {
-	// chunks, line, word_order
-	for(auto it = rotations.begin(); it != rotations.end(); ++it){
-		auto begin = it->first.first.rbegin();
-		auto middle = it->first.first.rbegin() + it->second;
-		auto end = it->first.first.rend();
+	for(Data& rotation : rotations){
+		auto&[words, ignore, wordOrder] = rotation;
+
+		auto begin = words.rbegin();
+		auto middle = words.rbegin() + wordOrder;
+		auto end = words.rend();
 		std::rotate(begin, middle, end);
 	}
 }
 
-inline bool comp (const Rotation& lhs, const Rotation& rhs){
-	auto lbeg = lhs.first.first.begin(), rbeg = rhs.first.first.begin();
-	auto lend = lhs.first.first.end(), rend = rhs.first.first.end();
-	//i, j �� string_iterator
-	for (auto i = lbeg, j = rbeg; i != lend && j != rend; ++i, ++j) {
-		auto lch_beg = i->begin(), rch_beg = j->begin();
-		auto lch_end = i->end(), rch_end = j->end();
-		for (auto a = lch_beg, b = rch_beg; a != lch_end && b != rch_end; ++a, ++b) {
-			int cmp = tolower(*b) - tolower(*a);
-			if (cmp > 0)
-				return true;
-			else if (cmp == 0)
-				continue;
-			else
-				return false;
-		}
-	}
-	return false;
-
-}
-
 void Permuted_Index::sort() {
-	std::sort(rotations.begin(), rotations.end(), comp);
+	auto IgnoreCase = [&](const Data& lhs, const Data& rhs) -> bool
+	{
+		const vector<Word>& lwords = get<0>(lhs),
+			rwords = get<0>(rhs);
+		//each iterator represents the word.
+		auto lit = lwords.cbegin(), rit = rwords.cbegin();
+		for (; lit != lwords.cend() && rit != rwords.cend(); ++lit, ++rit)
+		{
+			if (*lit == *rit)
+				continue;
+
+			return lexicographical_compare(lit->cbegin(), lit->cend(),
+				rit->cbegin(), rit->cend(), 
+				[](char l, char r) {return tolower(l) < tolower(r); });
+		}
+
+		if (lit == lwords.cend())
+			return true;
+		else
+			return false;
+	};
+
+	std::sort(rotations.begin(), rotations.end(), IgnoreCase);
 }
 
-inline void Permuted_Index::rotate(const Words& words) {
-	for (int i = 0; i < words.first.size(); ++i) {
+inline void Permuted_Index::rotate(Data& data) {
+	auto&[words, lineNO, ignore] = data;
+	for (size_t wordOrder = 0; wordOrder < words.size(); ++wordOrder) {
 		// pair: chunks, line, word_order
-		pair<Words, int> rotated = make_pair(words, i);
-		auto begin = rotated.first.first.begin();
-		std::rotate(begin, begin + rotated.second, rotated.first.first.end());
-		rotations.push_back(rotated);
+		std::rotate(words.begin(), words.begin() + wordOrder, words.end());
+		rotations.push_back({ words,lineNO,wordOrder });
 	}
 }
 
 void Permuted_Index::rotate() {
-	for (Words words : vec_Words) {
+	for (Data& words : dataVector) {
 		rotate(words);
 	}
-	vec_Words.clear();
+	dataVector.clear();
 }
 
-inline bool isnotspace(char c) { return !isspace(c); }
 
 inline void Permuted_Index::split(const Sentence& sentence) {
-	typedef Sentence::first_type::const_iterator iter;
+
+	auto isnotspace = [](char c) -> bool {return !isspace(c); };
+
+	using cIter = Sentence::first_type::const_iterator;
+
 	Words words;
-	words.second = sentence.second;
-	iter i = sentence.first.cbegin();
+	size_t lineNO = sentence.second, numberOfWords;
+
+	cIter i = sentence.first.cbegin();
 
 	while (i != sentence.first.cend()) {
 		i = std::find_if(i, sentence.first.cend(), isnotspace);
 
-		iter j = i;
+		cIter j = i;
 		j = std::find_if(j, sentence.first.cend(), isspace);
 		if (i != j) {
-			words.first.push_back(string(i, j));
+			words.push_back(string(i, j));
 			i = j;
 		}
 	}
-	vec_Words.push_back(words);
+	dataVector.push_back({ words, lineNO, numberOfWords });
 }
 
 void Permuted_Index::split() {
